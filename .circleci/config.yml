@@ -1,0 +1,11 @@
+version: 2.1
+
+jobs:
+  build:
+    docker:
+      - image: nimlang/nim:1.6.6-alpine-slim
+    resource_class: medium
+    steps:
+      - checkout
+      - run: |
+          nim c -r src/temperature.nim 32.0
