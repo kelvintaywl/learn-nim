@@ -3,17 +3,14 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: nimlang/nim:1.6.6-alpine-slim
+      - image: nimlang/nim:1.6.6
     resource_class: medium
     steps:
       - checkout
       - run:
           name: compile Nim
           command: |
-            # ls src/**/*.nim | xargs -n 1 nim c
-            nim c src/temperature.nim
-            nim c src/fibonacci.nim
-            nim c src/greeting.nim
+            ls src/**/*.nim | xargs -n 1 nim c
       - run:
           name: run tests
           command: |
