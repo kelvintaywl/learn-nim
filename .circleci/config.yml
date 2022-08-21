@@ -7,5 +7,11 @@ jobs:
     resource_class: medium
     steps:
       - checkout
-      - run: |
-          nim c -r src/temperature.nim 32.0
+      - run:
+          name: compile Nim
+          command: |
+            ls src/**/*.nim | xargs -n 1 nim c
+      - run:
+          name: run tests
+          command: |
+            testament pattern "tests/*.nim"
