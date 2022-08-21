@@ -10,7 +10,10 @@ jobs:
       - run:
           name: compile Nim
           command: |
-            ls src/**/*.nim | xargs -n 1 nim c
+            # ls src/**/*.nim | xargs -n 1 nim c
+            nim c src/temperature.nim
+            nim c src/fibonacci.nim
+            nim c src/greeting.nim
       - run:
           name: run tests
           command: |
